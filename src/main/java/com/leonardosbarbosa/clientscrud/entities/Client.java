@@ -1,5 +1,7 @@
 package com.leonardosbarbosa.clientscrud.entities;
 
+import com.leonardosbarbosa.clientscrud.dto.ClientDTO;
+
 import javax.persistence.*;
 import java.time.Instant;
 
@@ -17,6 +19,14 @@ public class Client {
     private Integer children;
 
     public Client() {
+    }
+
+    public Client(ClientDTO dto) {
+        this.name = dto.getName();
+        this.cpf = dto.getCpf();
+        this.income = dto.getIncome();
+        this.birthDate = dto.getBirthDate();
+        this.children = dto.getChildren();
     }
 
     public Long getId() {

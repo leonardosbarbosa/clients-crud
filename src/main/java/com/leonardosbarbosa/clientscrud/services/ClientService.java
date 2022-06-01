@@ -24,9 +24,17 @@ public class ClientService {
         return clientsList.map(entity -> new ClientDTO(entity));
     }
 
+    @Transactional(readOnly = true)
     public ClientDTO findClientById(Long id) {
         Optional<Client> client = repository.findById(id);
         Client entity = client.orElseThrow(() -> new ResourceNotFoundException(String.format("Client with id %d not found", id)));
+        return new ClientDTO(entity);
+    }
+
+    @Transactional
+    public ClientDTO insertNewClient(ClientDTO dto) {
+        Client entity = new Client(dto);
+        entity = repository.save(entity);
         return new ClientDTO(entity);
     }
 }
