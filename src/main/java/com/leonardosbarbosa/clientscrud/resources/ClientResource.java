@@ -44,4 +44,16 @@ public class ClientResource {
                 .buildAndExpand(dto.getId()).toUri();
         return ResponseEntity.created(uri).body(dto);
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<ClientDTO> updateClient(@PathVariable Long id, @RequestBody ClientDTO dto) {
+        dto = service.updateClient(id, dto);
+        return ResponseEntity.ok().body(dto);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteClientById(@PathVariable Long id) {
+        service.deleteClientById(id);
+        return ResponseEntity.noContent().build();
+    }
 }
