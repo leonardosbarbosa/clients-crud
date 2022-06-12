@@ -7,7 +7,7 @@ import com.leonardosbarbosa.clientscrud.services.exceptions.ResourceNotFoundExce
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -21,8 +21,8 @@ public class ClientService {
     private ClientRepository repository;
 
     @Transactional(readOnly = true)
-    public Page<ClientDTO> findAllClientsPaged(PageRequest pageRequest) {
-        Page<Client> clientsList = repository.findAll(pageRequest);
+    public Page<ClientDTO> findAllClientsPaged(Pageable pageable) {
+        Page<Client> clientsList = repository.findAll(pageable);
         return clientsList.map(entity -> new ClientDTO(entity));
     }
 
