@@ -1,5 +1,5 @@
 # clients-crud
-![GitHub](https://img.shields.io/github/license/leonardosbarbosa/clients-crud)
+[![GitHub](https://img.shields.io/github/license/leonardosbarbosa/clients-crud)](https://github.com/leonardosbarbosa/clients-crud/blob/main/license)
 
 # Sobre esse projeto
 Um CRUD completo de web services REST para acessar um recurso de clientes.
